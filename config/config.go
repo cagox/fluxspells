@@ -58,7 +58,7 @@ func GetConfigs() *ConfigurationStruct {
 	configuration := ConfigurationStruct{}
 	//err := gonfig.GetConf(configpath+"/gge.json", &configuration)
 
-	file, err := os.Open(configpath + "/gge.json")
+	file, err := os.Open(configpath + "/fluxspells.json")
 
 	//If there is an error (if the file doesn't exist or is malformed) we will created a default  configuration.
 	if err != nil {
