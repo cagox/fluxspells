@@ -7,7 +7,7 @@ This project represents a rewrite and extension of the Spell Book at spells.flux
 
 The original site was thrown together relatively quickly, with some degree of focus on design, but the majority of the focus was on functionality and getting it up quick. It does the job, and is functional, and will serve as a proof of concept and prototype going forward.
 
-Since then, my attention has shifted somewhat from Django to Go, and reimplementing this site is not only the perfect practice project, but will allow me to better maintian the project, and make better use of it in the future.
+Since then, my attention has shifted somewhat from Django to Go, and re-implementing this site is not only the perfect practice project, but will allow me to better maintain the project, and make better use of it in the future.
 
 This will be the first of a serries of apps for use with the Flux RPG Game System, and will be of use to players and game masters alike.
 

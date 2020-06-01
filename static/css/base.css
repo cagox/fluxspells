@@ -1,0 +1,116 @@
+
+
+body {
+  /*background: url('../images/cube-844235_1920.jpg');*/
+  /* background: #000000; */
+  background-color: #737769;
+  /*color: #85f762;*/
+  color: #000000;
+  font-family: "Lucida Sans Unicode";
+	font-size: medium;
+}
+
+/*header_row will be used for headers and footers.*/
+.header_row {
+  background-color: #7aaf90;
+  font-size: 11pt;
+}
+
+.admin_tools_row {
+  background-color: #8888BB;
+}
+
+.user_tools_row {
+  background-color: #66DD66;
+}
+
+.container a:link,
+.header_row a:link {
+  color: darkblue;
+}
+
+.container a:visited,
+.header_row a:visited {
+  color: darkblue;
+}
+
+.container a:hover,
+.header_row a:hover {
+  color: darkblue;
+}
+
+.container a:active,
+.header_row a:active {
+  color: darkblue;
+}
+
+.header_bottom {
+  border-bottom: 2px solid black;
+}
+
+.footer_top {
+  border-top: 2px solid black;
+}
+
+.container {
+  background-color: #9bf9d0;
+}
+
+.login-input {
+  width: 12em;
+  font-size: 0.9em;
+}
+
+/* CSS for Message Boxes */
+
+.alert {
+  padding: 20px;
+  margin-bottom: 15px;
+  position: absolute;
+  z-index: 50;
+  top: 4em;
+  right: 50%;
+  left:auto;
+  width: 30em;
+}
+
+.error {
+  background-color: #f44336;
+  color: white;
+}
+
+
+
+.info,
+.message {
+  background-color: #2196F3;
+  color: white;
+}
+
+.success {
+  background-color: #2196F3;
+  color: white;
+}
+
+.warning {
+  background-color: #2196F3;
+  color: white;
+}
+
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
