@@ -98,7 +98,7 @@ func getConfigPath() string {
 	configpath, isEnv := os.LookupEnv("FLUXSPELLSROOT")
 	if !isEnv {
 		home, _ := homedir.Dir() //TODO: Add error checking.
-		configpath = home + "/.config/fluxspells"
+		configpath = home + "/.config/fluxspellsconf"
 	}
 	return configpath
 }
