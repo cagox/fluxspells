@@ -20,6 +20,7 @@ type ConfigurationStruct struct {
 	StaticPath        string
 	MongoUserName     string
 	MongoPassword     string
+	DatabaseName      string
 	MongoServerURL    string
 	MongoSession      *mgo.Session
 	TemplateRoot      string
