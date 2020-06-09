@@ -6,8 +6,8 @@
                   <link rel="stylesheet" type="text/css" href="/static/css/core.css"  />
                   <link rel="stylesheet" type="text/css" href="/static/css/base.css"  />
                 {{end}}
-                {{ block "css" .}} {{end}}
-                {{ block "scripts" .}} {{end}}
+                {{ block "css" .}}<!-- Extra CSS goes here -->{{end}}
+                {{ block "scripts" .}} <!-- Scripts go here -->{{end}}
         </head>
         <body>
           <div class="container">

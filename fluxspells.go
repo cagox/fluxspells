@@ -16,7 +16,7 @@ func main() {
 
 	routes.Routes()
 
-	log.Fatal(http.ListenAndServe("localhost:8080", nil))
+	log.Fatal(http.ListenAndServe("localhost:8080", config.Config.Router))
 }
 
 //This is just a stub to kick things off.
