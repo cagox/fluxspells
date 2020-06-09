@@ -6,6 +6,7 @@ import (
 
 	"github.com/jinzhu/gorm"
 	"github.com/mitchellh/go-homedir"
+
 	//"github.com/gorilla/sessions"
 	"github.com/gorilla/mux"
 
@@ -17,6 +18,7 @@ var Config *ConfigurationStruct
 
 //ConfigurationStruct holds the configuration information for the program.
 type ConfigurationStruct struct {
+	FluxHost          string
 	StaticPath        string
 	MongoUserName     string
 	MongoPassword     string
@@ -29,14 +31,8 @@ type ConfigurationStruct struct {
 	MinPasswordLength int
 	EncKey            string
 	AuthKey           string
-	SMTPServer        string
-	SMTPPort          int
-	FromAddress       string
-	FromName          string
-	SMTPPassword      string
-	SMTPUserName      string
-	Router            *mux.Router
 
+	Router   *mux.Router
 	Database *gorm.DB //Not in the Config File.
 }
 
@@ -49,6 +45,7 @@ func LoadConfiguration() {
 	//TODO: Add error handling.
 	Config = GetConfigs()
 	Config.Router = mux.NewRouter()
+	//Config.Router.Host(Config.FluxHost)
 }
 
 //GetConfigs returns a configuration struct.
