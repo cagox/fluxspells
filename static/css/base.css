@@ -1,18 +1,22 @@
 
 
 body {
-  /*background: url('../images/cube-844235_1920.jpg');*/
-  /* background: #000000; */
-  background-color: #737769;
-  /*color: #85f762;*/
-  color: #000000;
-  font-family: "Lucida Sans Unicode";
-	font-size: medium;
+  background: url('../images/cube-844235_1920.jpg');
+  color: #00ff00;
+  font-family: monospace;
+  font-size: large;
+}
+
+.container {
+  background: #101010;
+}
+.contentblock {
+    min-height: 50em;
 }
 
 /*header_row will be used for headers and footers.*/
 .header_row {
-  background-color: #7aaf90;
+  /*background-color: #7aaf90;*/
   font-size: 11pt;
 }
 
@@ -26,35 +30,35 @@ body {
 
 .container a:link,
 .header_row a:link {
-  color: darkblue;
+  color: #00FF00;
 }
 
 .container a:visited,
 .header_row a:visited {
-  color: darkblue;
+  color: #00FF00;
 }
 
 .container a:hover,
 .header_row a:hover {
-  color: darkblue;
+  color: #00FF00;
 }
 
 .container a:active,
 .header_row a:active {
-  color: darkblue;
+  color: #00FF00;
 }
 
 .header_bottom {
-  border-bottom: 2px solid black;
+  border-bottom: 3px solid blue;
 }
 
 .footer_top {
-  border-top: 2px solid black;
+  border-top: 3px solid blue;
 }
 
-.container {
-  background-color: #9bf9d0;
-}
+//.container {
+//  background-color: #9bf9d0;
+//}
 
 .login-input {
   width: 12em;

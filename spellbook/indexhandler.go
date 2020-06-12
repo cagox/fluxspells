@@ -21,6 +21,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	//For now we are just going to load a templated file.
 	t := template.New("base.html")
 	t, err := t.ParseFiles(config.Config.TemplateRoot+"/base/base.html", config.Config.TemplateRoot+"/base/index.html")
+	//t, err := t.ParseFiles(config.Config.TemplateRoot + "/base/base.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

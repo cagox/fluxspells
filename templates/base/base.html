@@ -11,118 +11,16 @@
         </head>
         <body>
           <div class="container">
-          {{ block "header" .}}
-          <div class="row header_row">
-            {{ block "loginform" . }}
-              {{ if .Authenticated }}
-                <div class="one columns"> &nbsp;
-                  {{ if eq .Page "Index"}}
-                    Home
-                  {{else}}
-                    <a href="/">Home</a>
-                  {{end}}
-                </div>
-
-                <div class="thirteen columns"> &nbsp; </div>
-
-                <div class="one columns">
-                  {{ if eq .Page "Profile"}}
-                    Profile
-                  {{else}}
-                    <a href="/profile">Profile</a>
-                  {{end}}
-                </div>
-
-                <div class="one columns"><a href="/logout">Logout</a> </div>
-
-              {{else}}
-                <div class="six columns">
-                  &nbsp;
-                </div>
-                <div class="ten columns">
-                  <form action="/login" method="POST">
-                    Email: <input type="email" name="email" class="login-input">
-                    Password: <input type="password" name="password" class="login-input">
-                    <input type="submit" value="login">
-                  </form>
-                </div>
-              {{end}}
-
-              {{end}} <!--end loginform -->
-          </div>
-
-          <div class="row header_row">
-            {{block "pagedescription" .}}&nbsp;{{end}}
-          </div>
-
-            <div class="row header_row">
-              {{ if .Flashes}}
-                <div class="four columns">&nbsp;</div>
-                <div class="eight columns">
-                  <div class="alert">
-                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                      {{range .Flashes }}
-                        <div class="{{.Class}}">{{.Message}}</li>
-                      {{end}}
-                  </div>
-                </div>
-                <div class="four columns">&nbsp;</div>
-              {{else}}
-                <div class="sixteen columns"> &nbsp; </div>
-              {{end}}
-
-            </div>
-            <div class="row header_row header_bottom"><!-- Not sure yet -->
-              <div class="sixteen columns">
-                &nbsp;
+            {{ block "header" .}}
+            <div class="header_row">
+              <div class="row header_bottom">
+                <div class="one columns">&nbsp;</div>
+                <div class="fourteen columns">Header Stuff Here</div>
+                <div class="one columns">&nbsp;</div>
               </div>
-            </div>
-          {{end}}<!-- End Header Block-->
-
-          {{ block "admintools" .}}
-            {{if .IsAdmin}}
-              <div class="row admin_tools_row header_bottom">
-                <div class="one columns">&nbsp;&nbsp;
-                  {{ if eq .Page "Users" }}
-                    Users
-                  {{else}}
-                    <a href="/users">Users</a>
-                  {{end}}
-                </div>
-                <div class="two columns">
-                  {{ if eq .Page "InviteUser"}}
-                    InviteUser
-                  {{else}}
-                    <a href="/inviteuser">InviteUser</a>
-                  {{end}}
-                </div>
-                <div class="thirteen columns">+&nbsp;</div>
-              </div>
-            {{end}}
-          {{end}}
-          {{ block "usertools" .}}
-            {{ if .Authenticated }}
-              <div class="row user_tools_row header_bottom">
-                <div class="two columns">&nbsp;
-                  {{ if eq .Page "CreateGame"}}
-                    New Game
-                  {{else}}
-                    <a href="/games/create">New Game</a>
-                  {{end}}
-                </div>
-                <div class="two columns">&nbsp;
-                  {{ if eq .Page "Games"}}
-                    Games
-                  {{else}}
-                    <a href="/games">Games</a>
-                  {{end}}
-                </div>
-                <div class="twelve columns">&nbsp;</div>
-              </div>
-            {{end}}
-
-          {{end}}
-
+            </div> <!-- End Header Block -->
+            {{ end }} <!-- end header block -->
+          <div class="contentblock">
           {{ block "content" .}}
           <div class="row">
             &nbsp;
@@ -137,14 +35,14 @@
             &nbsp;
           </div>
           {{end}}<!-- end Content Block -->
-
+        </div> <!--End contentblock div-->
           {{ block "footer" .}}
           <div class="row header_row footer_top">
             <div class="twelve columns">
               &nbsp;
             </div>
             <div class="four columns">
-              Created by <a href="http://www.cagox.net/" target="_blank">Cagox</a>
+              Created by <a href="http://cagox.net/" target="_blank">Cagox</a>
             </div>
           </div>
           <div class="row header_row">
