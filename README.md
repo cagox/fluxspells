@@ -25,4 +25,4 @@ This project will be developed using the Go programming language, and MongoDB fo
 
 ## Licensing Stuff
 
-I will create a more properly worded license file in the near future, but this code is available for use under the terms of the MIT stlye license. Short version: Use the code however you want, but don't blame me if something breaks.
+Look at the license.md file for more official verbiage, but this code is available for use under the terms of the MIT license. Short version: Use the code however you want, but don't blame me if something breaks.
