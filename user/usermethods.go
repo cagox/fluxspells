@@ -65,13 +65,13 @@ func (user *User) Authenticate(password string) bool {
 	return crypto.ComparePassword(password, user.PasswordHash)
 }
 
-/****
-//CreateUserFromForm creates a new user object from the data provided via a UserForm object.
-func CreateUserFromForm(newUser Form) *User {
+
+//CreateUserFromForm creates a new user object from the data provided via a CreateUserForm object.
+func CreateUserFromForm(newUser CreateUserForm) *User {
 	user := &User{Email: newUser.Email, PasswordHash: crypto.HashPassword(newUser.Password)}
 	return user
 }
-****/
+
 
 //IsEmailUnique lets you verify if a user exists in the database already. False means they are there.ss
 func IsEmailUnique(email string) bool {
@@ -90,21 +90,19 @@ func IsEmailUnique(email string) bool {
 	return true
 }
 
-/**********
-//IsEmailValidated returns the value of User.IsEmailValidated
-func IsEmailValidated(address string) bool {
-	if IsEmailUnique(address) { //If they are not in the database, no further checks are needed.
-		return false
-	}
-	mongoSession := config.Config.MongoSession.Clone()
-	defer mongoSession.Close()
+//Insert User adds the user to the database.
+func InsertUser(*User) {
+	//TODO: Verify uniquness and add error handling.
+  mongoSession := config.Config.MongoSession.Clone()
+  defer mongoSession.Close()
 	users := mongoSession.DB(config.Config.DatabaseName).C("users")
-	user := User{}
-	err := users.Find(bson.M{"email": address}).One(&user)
+	err := users.Insert(&user)
 	if err != nil {
-		fmt.Println(err) //TODO: Proper Error Handling.
-	}
-
-	return user.EmailIsVerified
+              return err
+        }
+  return nil
 }
-**********/
+
+
+
+
