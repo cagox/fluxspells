@@ -1,0 +1,47 @@
+{{define "title"}}Create User{{end}}
+
+
+{{ define "header" }}
+<div class="row">
+  <div class="six columns">
+    &nbsp;
+  </div>
+  <div class="four columns">
+    Create New User
+  </div>
+    <div class="six columns">
+      &nbsp;
+      </div>
+    </div>
+    <div class="row">
+      <div class="sixteen columns">
+        &nbsp;
+      </div>
+    </div>
+{{ end }}
+
+
+{{define "content"}}
+
+<form method="POST" action="/createuser/">
+  <div class="row">
+    <div class="one columns">&nbsp;</div><div class="two columns">Email:</div>
+    <div class="one columns">&nbsp;</div><div class="three columns"><input type="text" name="email" id="email" style="width: 100%; color: #000000"></div>
+    <div class="nine columns">&nbsp;</div>
+  </div>
+  <div class="row">
+    <div class="one columns">&nbsp;</div><div class="two columns">Password:</div>
+    <div class="one columns">&nbsp;</div><div class="three columns"><input type="password" name="password" id="password" style="width: 100%; color: #000000"></div>
+    <div class="nine columns">&nbsp;</div>
+  </div>
+  <div class="row">
+    <div class="four columns">&nbsp;</div><div class="three columns"><input type="submit" value="Submit" style="width: 100%; color: #000000"></div>
+    <div class="nine columns">&nbsp;</div>
+  </div>
+
+
+</form>
+
+
+
+{{end}}

@@ -27,9 +27,13 @@ func GetUsers() []User {
 
 //AreThereAnyUsers checks to see if the database has any users or not.
 func AreThereAnyUsers() bool {
+
+	config.Config.Logger.Println("Attempting to load Mongo session.")
 	mongoSession := config.Config.MongoSession.Clone()
 	defer mongoSession.Close()
+	config.Config.Logger.Println("Attempting to get user list.")
 	users := mongoSession.DB(config.Config.DatabaseName).C("users")
+	config.Config.Logger.Println("Attempting to check user count.")
 	count, err := users.Count()
 	if err != nil {
 		//What the fuck?
@@ -65,13 +69,11 @@ func (user *User) Authenticate(password string) bool {
 	return crypto.ComparePassword(password, user.PasswordHash)
 }
 
-
 //CreateUserFromForm creates a new user object from the data provided via a CreateUserForm object.
 func CreateUserFromForm(newUser CreateUserForm) *User {
 	user := &User{Email: newUser.Email, PasswordHash: crypto.HashPassword(newUser.Password)}
 	return user
 }
-
 
 //IsEmailUnique lets you verify if a user exists in the database already. False means they are there.ss
 func IsEmailUnique(email string) bool {
@@ -90,19 +92,15 @@ func IsEmailUnique(email string) bool {
 	return true
 }
 
-//Insert User adds the user to the database.
-func InsertUser(*User) {
+//InsertUser adds the user to the database.
+func InsertUser(user *User) error {
 	//TODO: Verify uniquness and add error handling.
-  mongoSession := config.Config.MongoSession.Clone()
-  defer mongoSession.Close()
+	mongoSession := config.Config.MongoSession.Clone()
+	defer mongoSession.Close()
 	users := mongoSession.DB(config.Config.DatabaseName).C("users")
 	err := users.Insert(&user)
 	if err != nil {
-              return err
-        }
-  return nil
+		return err
+	}
+	return nil
 }
-
-
-
-

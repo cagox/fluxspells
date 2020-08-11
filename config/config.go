@@ -2,6 +2,7 @@ package config
 
 import (
 	"encoding/json"
+	"log"
 	"os"
 
 	"github.com/jinzhu/gorm"
@@ -31,9 +32,11 @@ type ConfigurationStruct struct {
 	MinPasswordLength int
 	EncKey            string
 	AuthKey           string
+	CookieName        string
 
 	Router   *mux.Router
 	Database *gorm.DB //Not in the Config File.
+	Logger   *log.Logger
 }
 
 func init() {

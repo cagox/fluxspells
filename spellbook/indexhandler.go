@@ -29,6 +29,9 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	fakeContext := dummyContext{}
 	fakeContext.Page = "Index"
 
-	t.Execute(w, fakeContext)
+	err = t.Execute(w, fakeContext)
+	if err != nil {
+		config.Config.Logger.Println(err.Error())
+	}
 	return
 }
