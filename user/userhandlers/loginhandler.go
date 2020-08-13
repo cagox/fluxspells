@@ -23,7 +23,7 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 			sessionData.AddFlash("error", "Email or Password did not match.")
 			thisSession.Values["sessiondata"] = sessionData
 			thisSession.Save(r, w)
-			http.Redirect(w, r, "/", http.StatusSeeOther)
+			http.Redirect(w, r, "/login/", http.StatusSeeOther)
 			return
 		}
 
