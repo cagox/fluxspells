@@ -14,8 +14,12 @@
             <div class="header_row">
               <div class="row header_bottom">
                 <div class="one columns">&nbsp;</div>
-                <div class="thirteen columns">FluxRPG Book of Spells</div>
-                <div class="two columns"><a hreaf="#">Logged In</a></div>
+                <div class="thirteen columns">FluxRPG Spell Book</div>
+                {{ if .Authenticated }}
+                  <div class="two columns"><a href="/logout/">Log out</a></div>
+                {{else}}
+                  <div class="two columns"><a href="/login/">Log In</a></div>
+                {{end}}
                 <!-- <div class="one columns">&nbsp;</div> -->
               </div>
             </div>

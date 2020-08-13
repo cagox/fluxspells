@@ -6,17 +6,15 @@ import (
 	"net/http"
 
 	"github.com/cagox/fluxspells/config"
+	"github.com/cagox/fluxspells/session"
 )
-
-//The current version of the template still has cruft from the project it was borrowed from.
-//This struct will provide the info that it thinks it wants.
-type dummyContext struct {
-	Page string
-}
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println("indexHandler was called.")
+
+	thisSession := session.GetSession(w, r)
+	sessionData := session.GetSessionData(thisSession)
 
 	//For now we are just going to load a templated file.
 	t := template.New("base.html")
@@ -26,10 +24,12 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	fakeContext := dummyContext{}
-	fakeContext.Page = "Index"
 
-	err = t.Execute(w, fakeContext)
+	var pageData session.BasePageData
+	pageData.BasicData(sessionData)
+	pageData.Page = "Index"
+
+	err = t.Execute(w, pageData)
 	if err != nil {
 		config.Config.Logger.Println(err.Error())
 	}

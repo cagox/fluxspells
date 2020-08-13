@@ -13,14 +13,14 @@ import (
 
 func main() {
 	//Set up logging
-	f, err := os.OpenFile("text.log",
+	f, err := os.OpenFile("fluxspells.log",
 		os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		log.Println(err)
 	}
 	defer f.Close()
 
-	config.Config.Logger = log.New(f, "prefix", log.LstdFlags)
+	config.Config.Logger = log.New(f, "flux: ", log.LstdFlags)
 
 	database.DialMongoSession()
 	defer config.Config.MongoSession.Close()
