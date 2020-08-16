@@ -8,7 +8,6 @@ import (
 	"github.com/jinzhu/gorm"
 	"github.com/mitchellh/go-homedir"
 
-	//"github.com/gorilla/sessions"
 	"github.com/gorilla/mux"
 
 	"github.com/globalsign/mgo"
