@@ -40,7 +40,7 @@ func createUserHandler(w http.ResponseWriter, r *http.Request) {
 		user.InsertUser(newUser)
 
 		//TODO: Once sessions are set up, add appropriate success message and setup session data.
-		sessionData.AddFlash("session", "User "+newUser.Email+" successfully created.")
+		sessionData.AddFlash("success", "User "+newUser.Email+" successfully created.")
 		thisSession.Values["sessiondata"] = sessionData
 		thisSession.Save(r, w)
 		//Redirect to root
