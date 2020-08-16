@@ -5,12 +5,10 @@ import (
 	"log"
 	"os"
 
-	"github.com/jinzhu/gorm"
 	"github.com/mitchellh/go-homedir"
+	"go.mongodb.org/mongo-driver/mongo"
 
 	"github.com/gorilla/mux"
-
-	"github.com/globalsign/mgo"
 )
 
 //Config holds the system configuration.
@@ -24,7 +22,6 @@ type ConfigurationStruct struct {
 	MongoPassword     string
 	DatabaseName      string
 	MongoServerURL    string
-	MongoSession      *mgo.Session
 	TemplateRoot      string
 	AdminToken        string
 	MinimumNameLength int
@@ -33,9 +30,9 @@ type ConfigurationStruct struct {
 	AuthKey           string
 	CookieName        string
 
-	Router   *mux.Router
-	Database *gorm.DB //Not in the Config File.
-	Logger   *log.Logger
+	Router      *mux.Router
+	Logger      *log.Logger
+	MongoClient *mongo.Client
 }
 
 func init() {

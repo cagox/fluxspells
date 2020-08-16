@@ -1,6 +1,2 @@
-//TODO: Copyright stuff
-
-/*
-Package database will handle the database related aspects of the program.
-*/
+//Package database handles database operations.
 package database

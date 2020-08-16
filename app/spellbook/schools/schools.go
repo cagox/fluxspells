@@ -14,6 +14,12 @@ type School struct {
 	Description string
 }
 
+//CreateSchoolForm is a helper type to make new schools forms easier.
+type CreateSchoolForm struct {
+	Name        string
+	Description string
+}
+
 func init() {
 	gob.Register(School{})
 }
