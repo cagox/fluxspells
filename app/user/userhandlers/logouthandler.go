@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/cagox/fluxspells/session"
+	"github.com/cagox/fluxspells/common/session"
 )
 
 //indexHandler just blanks the session data and returns to index.

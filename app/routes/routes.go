@@ -3,9 +3,9 @@ package routes
 import (
 	"net/http"
 
-	"github.com/cagox/fluxspells/config"
-	"github.com/cagox/fluxspells/spellbook"
-	"github.com/cagox/fluxspells/user/userhandlers"
+	"github.com/cagox/fluxspells/app/spellbook"
+	"github.com/cagox/fluxspells/app/user/userhandlers"
+	"github.com/cagox/fluxspells/common/config"
 )
 
 //Routes calls the Routes() functions in all of the packages.

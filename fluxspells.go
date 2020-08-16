@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/cagox/fluxspells/config"
-	"github.com/cagox/fluxspells/database"
-	"github.com/cagox/fluxspells/routes"
+	"github.com/cagox/fluxspells/app/routes"
+	"github.com/cagox/fluxspells/common/config"
+	"github.com/cagox/fluxspells/common/database"
 )
 
 func main() {

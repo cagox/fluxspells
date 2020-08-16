@@ -1,7 +1,7 @@
 package session
 
 import (
-	"github.com/cagox/fluxspells/user"
+	"github.com/cagox/fluxspells/app/user"
 )
 
 //BasePageData is the data that most pages will need. This can be used to build the data struct for templates.

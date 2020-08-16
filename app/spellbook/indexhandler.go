@@ -5,8 +5,8 @@ import (
 	"html/template"
 	"net/http"
 
-	"github.com/cagox/fluxspells/config"
-	"github.com/cagox/fluxspells/session"
+	"github.com/cagox/fluxspells/common/config"
+	"github.com/cagox/fluxspells/common/session"
 )
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {

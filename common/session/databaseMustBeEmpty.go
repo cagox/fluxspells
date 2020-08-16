@@ -3,7 +3,7 @@ package session
 import (
 	"net/http"
 
-	"github.com/cagox/fluxspells/user"
+	"github.com/cagox/fluxspells/app/user"
 )
 
 //DatabaseMustBeEmpty is a wrapper funtion to make sure the database is empty.

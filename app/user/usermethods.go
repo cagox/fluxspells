@@ -3,8 +3,8 @@ package user
 import (
 	"fmt"
 
-	"github.com/cagox/fluxspells/config"
-	"github.com/cagox/fluxspells/crypto"
+	"github.com/cagox/fluxspells/common/config"
+	"github.com/cagox/fluxspells/common/crypto"
 
 	"github.com/globalsign/mgo/bson"
 )

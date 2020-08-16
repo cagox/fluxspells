@@ -7,7 +7,7 @@ import (
 
 	"github.com/gorilla/sessions"
 
-	"github.com/cagox/fluxspells/config"
+	"github.com/cagox/fluxspells/common/config"
 )
 
 //Store is the session store.

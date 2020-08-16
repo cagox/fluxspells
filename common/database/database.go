@@ -6,7 +6,7 @@ import (
 	//Database Stuff
 	"github.com/globalsign/mgo"
 
-	"github.com/cagox/fluxspells/config"
+	"github.com/cagox/fluxspells/common/config"
 )
 
 //DialMongoSession starts the main mongo session.

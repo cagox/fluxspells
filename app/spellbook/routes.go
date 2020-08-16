@@ -3,7 +3,7 @@ package spellbook
 import (
 	"fmt"
 
-	"github.com/cagox/fluxspells/config"
+	"github.com/cagox/fluxspells/common/config"
 )
 
 //Routes initializes the routes for the spellbook package.

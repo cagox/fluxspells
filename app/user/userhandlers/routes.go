@@ -1,8 +1,8 @@
 package userhandlers
 
 import (
-	"github.com/cagox/fluxspells/config"
-	"github.com/cagox/fluxspells/session"
+	"github.com/cagox/fluxspells/common/config"
+	"github.com/cagox/fluxspells/common/session"
 )
 
 //Routes initializes the routes for the spellbook package.
