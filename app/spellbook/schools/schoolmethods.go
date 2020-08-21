@@ -3,10 +3,9 @@ package schools
 import (
 	"errors"
 	"log"
-	"net/url"
-	"strings"
 
 	"github.com/cagox/fluxspells/common/config"
+	simpleSlug "github.com/gosimple/slug"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 )
@@ -64,12 +63,8 @@ func CreateSchoolFromForm(newSchool CreateSchoolForm) *School {
 //I will work to improve this later before it makes its way into more
 //sensitive projects.
 func generateSchoolSlug(value string) string {
-	var slug string
-	//Remove whitespace
-	slug = strings.ReplaceAll(value, " ", "")
-	//Fix special characters
-	slug = url.QueryEscape(slug)
-	return slug
+
+	return simpleSlug.Make(value)
 }
 
 //ValidateIsSlugUnique Returns true if the school with matching slug does not already exist
@@ -89,7 +84,6 @@ func InsertNewSchool(school *School) error {
 	}
 
 	collection := config.Config.MongoClient.Database(config.Config.DatabaseName).Collection("schools")
-
 
 	_, err := collection.InsertOne(config.Config.MongoContext, school)
 	if err != nil {
