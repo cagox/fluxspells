@@ -2,25 +2,34 @@ package schools
 
 import (
 	"errors"
-	"fmt"
+	"log"
 	"net/url"
 	"strings"
 
 	"github.com/cagox/fluxspells/common/config"
-	"github.com/globalsign/mgo/bson"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 //GetSchools returns a list of all the schools in the database.
 func GetSchools() []School {
 	var allSchools []School
-	mongoSession := config.Config.MongoSession.Clone()
-	defer mongoSession.Close()
+	collection := config.Config.MongoClient.Database(config.Config.DatabaseName).Collection("schools")
 
-	collection := mongoSession.DB(config.Config.DatabaseName).C("schools")
-
-	err := collection.Find(nil).All(&allSchools)
+	cursor, err := collection.Find(config.Config.MongoContext, bson.D{})
 	if err != nil {
-		fmt.Println(err) //TODO: Add proper error handling.
+		config.Config.Logger.Println(err) //TODO: Add proper error handling.
+	}
+
+	for cursor.Next(config.Config.MongoContext) {
+		result := School{}
+		err := cursor.Decode(result)
+		if err != nil {
+			config.Config.Logger.Println(err)
+		}
+
+		allSchools = append(allSchools, result)
+
 	}
 
 	return allSchools
@@ -28,15 +37,18 @@ func GetSchools() []School {
 
 //GetSchoolBySlug returns a school assigned to a specific slug.
 func GetSchoolBySlug(slug string) *School {
-	mongoSession := config.Config.MongoSession.Clone()
-	defer mongoSession.Close()
-	allSchools := mongoSession.DB(config.Config.DatabaseName).C("schools")
+	collection := config.Config.MongoClient.Database(config.Config.DatabaseName).Collection("schools")
 	var school *School
+	school = new(School)
 
-	err := allSchools.Find(bson.M{"slug": slug}).One(&school)
+	err := collection.FindOne(config.Config.MongoContext, bson.D{{"slug", slug}}).Decode(school)
 	if err != nil {
-		//TODO Error handling
+		if err == mongo.ErrNoDocuments {
+			return nil
+		}
+		log.Fatal(err)
 	}
+
 	return school
 }
 
@@ -62,16 +74,9 @@ func generateSchoolSlug(value string) string {
 
 //ValidateIsSlugUnique Returns true if the school with matching slug does not already exist
 func ValidateIsSlugUnique(slug string) bool {
-	mongoSession := config.Config.MongoSession.Clone()
-	defer mongoSession.Close()
-	collection := mongoSession.DB(config.Config.DatabaseName).C("schools")
+	school := GetSchoolBySlug(slug)
 
-	count, err := collection.Find(bson.M{"slug": slug}).Count()
-	if err != nil {
-		fmt.Println(err) //TODO: Proper Error HAndling.
-	}
-
-	if count > 0 {
+	if school != nil {
 		return false
 	}
 	return true
@@ -83,11 +88,10 @@ func InsertNewSchool(school *School) error {
 		return errors.New("Name too similar")
 	}
 
-	mongoSession := config.Config.MongoSession.Clone()
-	defer mongoSession.Close()
-	allSchools := mongoSession.DB(config.Config.DatabaseName).C("schools")
+	collection := config.Config.MongoClient.Database(config.Config.DatabaseName).Collection("schools")
 
-	err := allSchools.Insert(&school)
+
+	_, err := collection.InsertOne(config.Config.MongoContext, school)
 	if err != nil {
 		return err
 	}
