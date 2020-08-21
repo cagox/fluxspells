@@ -4,12 +4,12 @@ import (
 	"encoding/gob"
 	"time"
 
-	"github.com/globalsign/mgo/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 //User is meant to hold user related information in the Database.
 type User struct {
-	ID           bson.ObjectId `bson:"_id,omitempty"`
+	ID           primitive.ObjectID `bson:"_id,omitempty"`
 	Email        string
 	PasswordHash string
 	IsAdmin      bool

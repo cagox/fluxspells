@@ -1,6 +1,7 @@
 package config
 
 import (
+	"context"
 	"encoding/json"
 	"log"
 	"os"
@@ -30,9 +31,10 @@ type ConfigurationStruct struct {
 	AuthKey           string
 	CookieName        string
 
-	Router      *mux.Router
-	Logger      *log.Logger
-	MongoClient *mongo.Client
+	Router       *mux.Router
+	Logger       *log.Logger
+	MongoClient  *mongo.Client
+	MongoContext context.Context
 }
 
 func init() {

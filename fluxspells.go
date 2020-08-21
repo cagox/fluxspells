@@ -23,7 +23,7 @@ func main() {
 	config.Config.Logger = log.New(f, "flux: ", log.LstdFlags)
 
 	database.DialMongoSession()
-	defer config.Config.MongoSession.Close()
+	//defer config.Config.MongoClient.Close()
 
 	fmt.Println("Hello World!")
 	fmt.Println("Statics: " + config.Config.StaticPath)
