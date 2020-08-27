@@ -8,8 +8,15 @@
   </div>
 </div>
 <div class="row">
-  <div class="sixteen columns header_bottom">
-    Schools go Here
+  <div class="row">
+    <div class="sixteen columns header_bottom">
+      Schools: {{ if .Authenticated }}<a href="/addschool/">Add New School</a>{{end}}
+    </div>
+  </div>
+  <div class="sixteen columns header_bottom">&nbsp;
+    {{ range .Schools }}
+      &nbsp;<div class="schoolname"><a href="">{{.Name}}</a></div>&nbsp;
+    {{end}}
   </div>
 </div>
 <div class="row header_bottom">
