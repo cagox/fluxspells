@@ -1,3 +1,6 @@
 flux: 2020/08/15 23:48:19 Database: fluxspells        User: spellbookUser
 flux: 2020/08/16 00:23:41 Database: fluxspells        User: spellbookUser
 flux: 2020/08/16 00:58:22 Database: fluxspells        User: spellbookUser
+flux: 2020/08/27 01:49:59 argument to Decode must be a pointer or a map, but got {ObjectID("000000000000000000000000")   false 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC}
+flux: 2020/08/27 01:57:39 argument to Decode must be a pointer or a map, but got {ObjectID("000000000000000000000000")   false 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC}
+flux: 2020/08/27 01:57:48 argument to Decode must be a pointer or a map, but got {ObjectID("000000000000000000000000")   false 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC}

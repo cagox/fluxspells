@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/cagox/fluxspells/app/database"
 	"github.com/cagox/fluxspells/common/config"
 	"github.com/cagox/fluxspells/common/crypto"
 
@@ -15,6 +16,14 @@ import (
 func GetUsers() []User {
 	fmt.Println("usermethods.go GetUsers()")
 	var users []User
+
+	/*
+		//TODO: Get the following line to work by fixing database.GetAll()
+		users, err := database.GetAll("users", users)
+		if err != nil {
+			config.Config.Logger.Println(err) //TODO: Add proper error handling.
+		}
+	*/
 
 	collection := config.Config.MongoClient.Database(config.Config.DatabaseName).Collection("users")
 
@@ -55,14 +64,14 @@ func AreThereAnyUsers() bool {
 
 //GetUserByEmail grabs a user object from the database based on the email address.
 func GetUserByEmail(email string) *User {
-	fmt.Println("usermethods.go GetUserByEmail()")
-	fmt.Println("email: " + email)
-	collection := config.Config.MongoClient.Database(config.Config.DatabaseName).Collection("users")
+	//collection := config.Config.MongoClient.Database(config.Config.DatabaseName).Collection("users")
 
 	var user *User
 	user = new(User)
 	//opts := options.FindOne().SetSort(bson.D{})
-	err := collection.FindOne(config.Config.MongoContext, bson.D{{"email", email}}).Decode(user)
+	//err := collection.FindOne(config.Config.MongoContext, bson.D{{"email", email}}).Decode(user)
+
+	err := database.GetOne("users", bson.D{{Key: "email", Value: email}}, user)
 
 	if err != nil {
 		if err == mongo.ErrNoDocuments {

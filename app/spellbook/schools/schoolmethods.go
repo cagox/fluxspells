@@ -4,6 +4,7 @@ import (
 	"errors"
 	"log"
 
+	"github.com/cagox/fluxspells/app/database"
 	"github.com/cagox/fluxspells/common/config"
 	simpleSlug "github.com/gosimple/slug"
 	"go.mongodb.org/mongo-driver/bson"
@@ -36,11 +37,11 @@ func GetSchools() []School {
 
 //GetSchoolBySlug returns a school assigned to a specific slug.
 func GetSchoolBySlug(slug string) *School {
-	collection := config.Config.MongoClient.Database(config.Config.DatabaseName).Collection("schools")
+	//collection := config.Config.MongoClient.Database(config.Config.DatabaseName).Collection("schools")
 	var school *School
 	school = new(School)
 
-	err := collection.FindOne(config.Config.MongoContext, bson.D{{"slug", slug}}).Decode(school)
+	err := database.GetOne("schools", bson.D{{Key: "slug", Value: slug}}, school)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			return nil

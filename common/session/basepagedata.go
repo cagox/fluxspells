@@ -10,6 +10,7 @@ type BasePageData struct {
 	Flashes       []Flash
 	Authenticated bool
 	IsAdmin       bool
+	Email         string
 }
 
 //BasicData fills in the BasePageData struct from the provided session.
@@ -18,8 +19,9 @@ func (data *BasePageData) BasicData(session Data) {
 
 	if data.Authenticated {
 		user := user.GetUserByEmail(session.Email)
-		//config.Config.Database.Where("id = ?", session.UserID).First(&user)
+
 		data.IsAdmin = user.IsAdmin
+		data.Email = user.Email
 	}
 
 }
