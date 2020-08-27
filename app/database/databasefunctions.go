@@ -18,11 +18,11 @@ func GetOne(targetCollection string, pattern bson.D, object interface{}) error {
 }
 
 //GetAll gets the contents of the collection.
-func GetAll(targetCollection string, objects interface{}) error {
+func GetAll(targetCollection string, objects *[]interface{}) error {
 	//TODO: Get this to actually work and fill/return an array.
 	collection := config.Config.MongoClient.Database(config.Config.DatabaseName).Collection(targetCollection)
 
-	var values []interface{}
+	//var values []interface{}
 
 	cursor, err := collection.Find(config.Config.MongoContext, bson.D{})
 	if err != nil {
@@ -35,10 +35,10 @@ func GetAll(targetCollection string, objects interface{}) error {
 		if err != nil {
 			return err
 		}
-		values = append(values, result)
+		*objects = append(*objects, result)
 	}
 
-	objects = values
-	_ = objects
+	//objects = values
+	//_ = objects
 	return nil
 }

@@ -16,10 +16,9 @@ import (
 func GetUsers() []User {
 	fmt.Println("usermethods.go GetUsers()")
 	var users []User
-
 	/*
 		//TODO: Get the following line to work by fixing database.GetAll()
-		users, err := database.GetAll("users", users)
+		err := database.GetAll("users", &users)
 		if err != nil {
 			config.Config.Logger.Println(err) //TODO: Add proper error handling.
 		}

@@ -25,6 +25,9 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	//users := user.GetUsers()
+	//fmt.Println(len(users))
+
 	var pageData session.BasePageData
 	pageData.BasicData(sessionData)
 	pageData.Page = "Index"

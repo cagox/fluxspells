@@ -1,7 +1,6 @@
 package schools
 
 import (
-	"errors"
 	"log"
 
 	"github.com/cagox/fluxspells/app/database"
@@ -81,7 +80,7 @@ func ValidateIsSlugUnique(slug string) bool {
 //InsertNewSchool adds a new school to the database.
 func InsertNewSchool(school *School) error {
 	if !(ValidateIsSlugUnique(school.Slug)) {
-		return errors.New("Name too similar")
+		return ErrorNameTooSimilar
 	}
 
 	collection := config.Config.MongoClient.Database(config.Config.DatabaseName).Collection("schools")
