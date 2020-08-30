@@ -91,3 +91,43 @@ func InsertNewSchool(school *School) error {
 	}
 	return nil
 }
+
+//UpdateSchool replaces existing School document with an updated version.
+func UpdateSchool(school *School) error {
+	collection := config.Config.MongoClient.Database(config.Config.DatabaseName).Collection("schools")
+	filter := bson.D{{Key: "slug", Value: school.Slug}}
+
+	result, err := collection.ReplaceOne(config.Config.MongoContext, filter, school)
+	if err != nil {
+		config.Config.Logger.Println("Update School Failed: " + err.Error())
+		return err
+	}
+
+	if result.MatchedCount == 0 {
+		return ErrorNoSuchDocument
+	}
+	if result.UpsertedCount == 0 {
+		return ErrorUpdateFailed
+	}
+
+	return nil
+}
+
+//DeleteSchool deletes a school
+func DeleteSchool(slug string) error {
+	collection := config.Config.MongoClient.Database(config.Config.DatabaseName).Collection("schools")
+	filter := bson.D{{Key: "slug", Value: slug}}
+
+	result, err := collection.DeleteOne(config.Config.MongoContext, filter)
+
+	if err != nil {
+		config.Config.Logger.Println("Delete School Failed: " + err.Error())
+		return err
+	}
+
+	if result.DeletedCount == 0 {
+		return ErrorNoSuchDocument
+	}
+
+	return nil
+}

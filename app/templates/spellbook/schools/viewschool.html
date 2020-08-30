@@ -1,0 +1,23 @@
+{{define "title"}}FluxRPG Spell Book: School of {{.School.Name}}{{end}}
+
+
+{{define "header"}}
+  <div class="row header_bottom">
+    <div class="one columns">&nbsp;</div>
+    <div class="twelve columns">{{.School.Name}}</div>
+    {{if .Authenticated}}
+      <div class="one column"> <a href="#">Add Spell</a></div>
+      <div class="one column"> <a href="#">Edit School</a></div>
+      <div class="one column"> <a href="#">Delete</a></div>
+    {{else}}
+      <div class="three columns"> &nbsp; </div>
+    {{end}}
+  </div>
+  <div class="row">
+    <div class="one column">&nbsp;</div>
+    <div class="fourteen columns">{{.School.Description}}</div>
+    <div class="one column">&nbsp;</div>
+  </div>
+
+
+{{end}}
