@@ -6,6 +6,7 @@ import (
 
 	"github.com/gorilla/mux"
 
+	"github.com/cagox/fluxspells/app/contexts"
 	"github.com/cagox/fluxspells/app/spellbook/schools"
 	"github.com/cagox/fluxspells/common/config"
 	"github.com/cagox/fluxspells/common/session"
@@ -20,9 +21,10 @@ func schoolHandler(w http.ResponseWriter, r *http.Request) {
 	school := schools.GetSchoolBySlug(slug)
 
 	if school != nil {
-		var pageData schools.SchoolPage
+		var pageData contexts.SchoolPage
 		pageData.SetupPage(sessionData)
-		pageData.ThisSchool = *school
+		pageData.SetupSchool(*school)
+		//pageData.SetupSpells()
 
 		t := template.New("base.html")
 		t, err := t.ParseFiles(config.Config.TemplateRoot+"/base/base.html", config.Config.TemplateRoot+"/spellbook/schools/viewschool.html")

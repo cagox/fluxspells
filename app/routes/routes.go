@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/cagox/fluxspells/app/spellbook"
+	"github.com/cagox/fluxspells/app/spellbook/schools/schoolhandlers"
 	"github.com/cagox/fluxspells/app/user/userhandlers"
 	"github.com/cagox/fluxspells/common/config"
 )
@@ -13,6 +14,7 @@ func Routes() {
 	specialRoutes()
 	spellbook.Routes()
 	userhandlers.Routes()
+	schoolhandlers.Routes()
 }
 
 func specialRoutes() {

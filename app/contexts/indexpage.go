@@ -1,4 +1,4 @@
-package spellbook
+package contexts
 
 import (
 	"github.com/cagox/fluxspells/app/spellbook/schools"

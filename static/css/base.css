@@ -78,6 +78,17 @@ body {
   font-size: 0.9em;
 }
 
+.inputtext {
+  width: 100%;
+  color: #000000;
+}
+
+.inputtextbox {
+  height: 4em;
+}
+
+
+
 /* CSS for Message Boxes */
 
 .alert {

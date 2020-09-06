@@ -1,17 +1,17 @@
 package spellbook
 
 import (
-	"fmt"
 	"html/template"
 	"net/http"
 
+	"github.com/cagox/fluxspells/app/contexts"
 	"github.com/cagox/fluxspells/common/config"
 	"github.com/cagox/fluxspells/common/session"
 )
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 
-	fmt.Println("indexHandler was called.")
+	//fmt.Println("indexHandler was called.")
 
 	thisSession := session.GetSession(w, r)
 	sessionData := session.GetSessionData(thisSession)
@@ -28,7 +28,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	//users := user.GetUsers()
 	//fmt.Println(len(users))
 
-	var pageData IndexPage
+	var pageData contexts.IndexPage
 	pageData.SetupPage(sessionData)
 	//pageData.Page = "Index"
 

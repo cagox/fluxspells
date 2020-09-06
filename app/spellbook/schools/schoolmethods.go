@@ -22,7 +22,8 @@ func GetSchools() []School {
 
 	for cursor.Next(config.Config.MongoContext) {
 		result := School{}
-		err := cursor.Decode(result)
+		err := cursor.Decode(&result)
+
 		if err != nil {
 			config.Config.Logger.Println(err)
 		}
@@ -32,6 +33,7 @@ func GetSchools() []School {
 	}
 
 	return allSchools
+
 }
 
 //GetSchoolBySlug returns a school assigned to a specific slug.

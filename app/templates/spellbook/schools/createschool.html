@@ -1,0 +1,42 @@
+{{define "title"}}Create New School{{end}}
+
+{{define "header"}}
+
+<div class="row header_bottom">
+  <div class="one columns">&nbsp;</div>
+  <div class="fourteen columns">Define a new School of Magic</div>
+  <div class="one columns">&nbsp;</div>
+</div>
+
+{{end}}
+
+
+{{define "content"}}
+<form method="POST" action="">
+  <div class="row">
+    <div class="one columns">&nbsp;</div>
+    <div class="two columns">Spell Name:</div>
+    <div class="three columns">
+      {{if .CreationError}}
+        <input type="text" class="inputtext" name="name" id="name" value={{.Name}}>
+      {{else}}
+        <input type="text" class="inputtext" name="name" id="name">
+      {{end}}
+    </div>
+    <div class="ten columns">&nbsp;</div>
+  </div>
+  <div class="row"><div class="sixteen columns">&nbsp;</div></div>
+  <div class="row">
+    <div class="one columns">&nbsp;</div>
+    <div class="two columns">Description:</div>
+    <div class="ten columns"><textarea class="inputtext inputtextbox" name="description" id="description">{{if .CreationError}}{{.Description}}{{end}}</textarea></div>
+    <div class="three columns">&nbsp;</div>
+  </div>
+  <div class="row"><div class="sixteen columns">&nbsp;</div></div>
+  <div class="row">
+    <div class="ten columns">&nbsp;</div>
+    <div class="three columns"><input type="submit" value="Submit" class="inputtext" /></div>
+    <div class="three columns">&nbsp;</div>
+  </div>
+</form>
+{{end}}

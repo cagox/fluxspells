@@ -1,23 +1,35 @@
-{{define "title"}}FluxRPG Spell Book: School of {{.School.Name}}{{end}}
+{{define "title"}}FluxRPG Spell Book: School of {{.ThisSchool.Name}}{{end}}
 
 
 {{define "header"}}
   <div class="row header_bottom">
     <div class="one columns">&nbsp;</div>
-    <div class="twelve columns">{{.School.Name}}</div>
+    <div class="ten columns">{{.ThisSchool.Name}}</div>
     {{if .Authenticated}}
-      <div class="one column"> <a href="#">Add Spell</a></div>
-      <div class="one column"> <a href="#">Edit School</a></div>
-      <div class="one column"> <a href="#">Delete</a></div>
+      <div class="five columns">
+        <a href="#">Add Spell</a> |
+        <a href="#">Edit School</a> |
+        <a href="#">Delete</a></div>
     {{else}}
-      <div class="three columns"> &nbsp; </div>
+      <div class="seven columns"> &nbsp; </div>
     {{end}}
   </div>
-  <div class="row">
+  <div class="row header_bottom">
     <div class="one column">&nbsp;</div>
-    <div class="fourteen columns">{{.School.Description}}</div>
+    <div class="fourteen columns">{{.ThisSchool.Description}}</div>
     <div class="one column">&nbsp;</div>
   </div>
-
+{{end}}
+{{define "content"}}
+  <div class="row"><div class="sixteen columns">&nbsp;</div></div>
+  {{ range .Spells }}
+    <div class="row">
+      <div class="one columns">&nbsp;</div>
+      <div class="three columns"> {{.Name}}</div>
+      <div class="one columns">&nbsp;</div>
+      <div class="ten columns">{{.Description}}</div>
+      <div class="one columns">&nbsp;</div>
+    </div>
+  {{end}}
 
 {{end}}

@@ -63,7 +63,9 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	t.Execute(w, nil) //TODO: Update this eventually to deal more gracefully with errors.
+	pageData := session.BasePageData{}
+	pageData.Page = "Login"
+	t.Execute(w, pageData) //TODO: Update this eventually to deal more gracefully with errors.
 	return
 
 }

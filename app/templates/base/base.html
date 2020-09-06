@@ -13,9 +13,12 @@
           <div class="container">
             <div class="header_row">
               <div class="row header_bottom">
-                <div class="one columns">&nbsp;</div>
-                <div class="thirteen columns">
-                  FluxRPG Spell Book
+                <div class="fourteen columns">
+                  {{if eq .Page "Index" }}
+                    FluxRPG Spell Book
+                  {{else}}
+                    <a href="/">FluxRPG Spell Book</a>
+                  {{end}}
                 </div>
                 {{ if .Authenticated }}
                   <div class="two columns"><a href="/logout/">Log out</a></div>
