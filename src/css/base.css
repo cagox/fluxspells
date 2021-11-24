@@ -1,0 +1,116 @@
+/*
+ *  CSS File Created by Kenneth M Burling.
+ */
+
+body { 
+	background: url('../img/cube-844235_1920.jpg');
+	background-color: #005511;
+	color: #00ff00;
+	font-family: monospace;
+	font-size: large;
+}
+
+
+.container {
+	/* background-color: #004400; */
+	background-color: #007700;
+}
+
+.navbar-logo {
+	height: 140px;
+	width: 140px;
+}
+
+
+
+.navbar-top {
+	border-bottom-style: solid;
+	border-bottom-color: black;
+}
+
+.navbar-bottom {
+	border-top-style: solid;
+	border-top-color: black;
+}
+
+.navbar-item {
+	/* background-color: #77c9d4; */
+	/* padding-left: 1em; */
+}
+
+
+.content {
+	padding: 1em;
+	font-size: larger;
+}
+
+.footer {
+	text-align: right;
+	border-style: solid;
+	/*border-width: 2px;*/
+	border-color: #00AA00;
+	width: 100%;
+}
+
+
+.footer a:link {
+	color: #00FF00;
+	text-decoration: none;
+}
+.footer a:visited {
+	color: #00FF00;
+	text-decoration: none;
+}
+.footer a:hover {
+	color: #00FF00;
+	text-decoration: none;
+}
+.footer a:active {
+	color: #00FF00;
+	text-decoration: none;
+}
+
+.title-text {
+	text-align: center;
+}
+
+.spell-list-item {
+	border-style: solid;
+	border-width: 1px;
+	margin: 0px;
+}
+
+.spell-list-element {
+	border-style: solid;
+	border-width: 1px;
+	margin: 0px;
+}
+
+
+
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   color: #00FF00;
+   background-color: #00AA00;
+ }
+
+.table-striped>tbody>tr:nth-child(even)>td, 
+.table-striped>tbody>tr:nth-child(even)>th {
+   color: #00FF00;
+   background-color: #005500;
+ }
+
+
+
+
+.spells-th {
+	
+	color: #00FF00;
+	font-size: 1.25em;
+}
+
+.left-border-green {
+	border-left: solid #00FF00;
+}
+
+

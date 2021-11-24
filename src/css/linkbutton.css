@@ -1,0 +1,35 @@
+button.link {
+    font-family: monospace;
+    font-size: 1em;
+    font-weight: normal;
+    text-align: left;
+    color: #00FF00;
+    background: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+
+    -moz-user-select: text;
+    display:inline;
+    text-transform: capitalize;
+
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+button.bordered {
+    border-style: solid;
+    border-color: #00AA00;
+}
+
+.buttonimg {
+	border: 0;
+	text-decoration: none;
+	outline: none;
+}
+
+
+form.link {
+    display: inline;
+}
