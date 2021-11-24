@@ -17,7 +17,6 @@ function SchoolURL(props){
 function SchoolsHeader(props){
     const [schools, setSchools] = useState(null)
 
-    const context = useContext(AppContext)
     //const requestURI = apiroot+"/schools/header"
 
 
