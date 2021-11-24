@@ -22,7 +22,9 @@ function SchoolsHeader(props){
 
 
     useEffect(()=> {
-        fetch(apiroot+'schools/header')
+        fetch(apiroot+'schools/header', {
+            method: 'GET'
+        })
             .then(response => response.json())
             .then(data => {
                 setSchools(data);
