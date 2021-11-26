@@ -9,7 +9,7 @@ function PageHeader(props) {
     return(
 
             <div className="page-header title-text">
-                <h1>FluxRPG Spell List</h1>
+                <h1>{context.headerTitle}</h1>
             </div>
 
             );

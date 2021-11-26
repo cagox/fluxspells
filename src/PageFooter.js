@@ -1,5 +1,5 @@
-import React, {useContext, useEffect} from 'react';
-import AppContext from './AppContext.js';
+import React from 'react';
+
 
 
 function PageFooter(){

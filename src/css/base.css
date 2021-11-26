@@ -113,3 +113,14 @@ a:active {
 thead {
 	background-color:#007777;
 }
+
+.description-box {
+	max-width: 50%;
+	margin: 2em auto;
+	border-style: solid;
+}
+
+.icon {
+	height: 25px;
+	widht: 25px;
+}

@@ -6,10 +6,9 @@ export const AppContext = createContext();
 export const AppContextProvider = ({ children }) => {
     const [page, setPage]               = useState("indexPage");
     const [school, setSchool]           = useState("all");
-    const [category, setCategory]       = useState("all");
+    const [spellCategory, setSpellCategory]  = useState("all");
     const [spell, setSpell]             = useState("none");
     const [headerTitle, setHeaderTitle] = useState("FluxRPG Spell List");
-    /* const [apiroot, setApiroot]         = useState("http://localhost:8080/api"); */
 
     return (
         <AppContext.Provider
@@ -17,12 +16,12 @@ export const AppContextProvider = ({ children }) => {
                 page,
                 school,
                 spell,
-                category,
+                spellCategory,
                 headerTitle,
                 setPage,
                 setSchool,
                 setSpell,
-                setCategory,
+                setSpellCategory,
                 setHeaderTitle,
             }}
         >
