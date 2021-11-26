@@ -7,16 +7,15 @@ import editIcon from './img/toolPencil.png';
 export function CategoryURL(props){
     const context = useContext(AppContext);
     let new_title = props.name + " Spells";
-    const clickhandler = () => {context.setPage("categoryView"); context.setSpellCategory(props.category_id); context.setSchool("all"); context.setHeaderTitle(new_title);}
+    const clickHandler = () => {context.setPage("categoryView"); context.setSpellCategory(props.category_id); context.setSchool("all"); context.setHeaderTitle(new_title);}
 
-    return (<button className="link" key={props.category_id} onClick={clickhandler}>{props.name}</button>);
+    return (<button className="link" key={props.category_id} onClick={clickHandler}>{props.name}</button>);
 }
 
 
 function CategoriesFooter(){
     const [categories, setCategories] = useState(null)
 
-    //const requestURI = apiroot+"/schools/header"
 
 
     useEffect(()=> {

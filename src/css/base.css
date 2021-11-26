@@ -124,3 +124,9 @@ thead {
 	height: 25px;
 	widht: 25px;
 }
+
+.spell-box {
+	max-width: 80%;
+	margin: 2em auto;
+	border-style: solid;
+}

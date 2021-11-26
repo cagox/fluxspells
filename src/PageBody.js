@@ -3,6 +3,7 @@ import {AppContext} from './AppContext.js';
 import SpellList from './SpellList.js';
 import SchoolView from "./SchoolView";
 import CategoryView from "./CategoryView";
+import SpellView from "./SpellView";
 //import SchoolView from './SchoolView.js';
 //import SpellView from './SpellView';
 
@@ -23,11 +24,9 @@ function PageBody(props){
         return (<CategoryView />);
     }
 
-    /*
     if(context.page === "spellView") {
         return (<SpellView />);
     }
-    */
 
     /*
             if page === "typeView"
