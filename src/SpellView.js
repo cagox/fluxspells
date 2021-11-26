@@ -37,20 +37,21 @@ function SpellView() {
     return(
         <div className="container spell-box">
             <div className="row">
-                <div className="col-sm">Cost: </div><div className="col-sm">{spell.cost}</div>
-                <div className="col-sm">Difficulty: </div><div className="col-sm">{spell.difficulty}</div>
-                <div className="col-sm">Range: </div><div className="col-sm">{spell.spellrange}</div>
+                <div className="col">Cost: </div><div className="col">{spell.cost}</div>
+                <div className="col">Difficulty: </div><div className="col">{spell.difficulty}</div>
+                <div className="col">Range: </div><div className="col">{spell.spellrange}</div>
             </div>
             <div className="row">
-                <div className="col-sm-auto">Prerequisites:</div><div className="col-md-auto">{spell.prerequisites}</div>
-                <div className="col-md-auto">Ability Score: </div><div className="col-sm-auto">{abilityScore.name}</div>
+                <div className="col">Prerequisites:</div><div className="col">{spell.prerequisites}</div>
+                <div className="col">Ability Score: </div><div className="col">{abilityScore.name}</div>
             </div>
 
             <div className="row">
-                <div className="col-sm-auto">Schools:</div><div className="col-sm-auto">{spell.schools.map((item) => <span>{item.name}</span>)}</div>
+                <div className="col-sm-auto">Schools:</div><div className="col">{spell.schools.map((item) => <span>{item.name}</span>)}</div>
             </div>
+
             <div className="row">
-                <div className="col-sm-auto">Categories:</div><div className="col-sm-auto">{spell.categories.map((item) => <span>{item.name}</span>)}</div>
+                <div className="col-sm-auto">Categories:</div><div className="col">{spell.categories.map((item) => <span>{item.name}</span>)}</div>
             </div>
 
             <div className="row">
