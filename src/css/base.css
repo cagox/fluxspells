@@ -53,19 +53,19 @@ body {
 }
 
 
-.footer a:link {
+a:link {
 	color: #00FF00;
 	text-decoration: none;
 }
-.footer a:visited {
+a:visited {
 	color: #00FF00;
 	text-decoration: none;
 }
-.footer a:hover {
+a:hover {
 	color: #00FF00;
 	text-decoration: none;
 }
-.footer a:active {
+a:active {
 	color: #00FF00;
 	text-decoration: none;
 }
@@ -77,13 +77,13 @@ body {
 .spell-list-item {
 	border-style: solid;
 	border-width: 1px;
-	margin: 0px;
+	margin: 0;
 }
 
 .spell-list-element {
 	border-style: solid;
 	border-width: 1px;
-	margin: 0px;
+	margin: 0;
 }
 
 
@@ -91,7 +91,7 @@ body {
 .table-striped>tbody>tr:nth-child(odd)>td, 
 .table-striped>tbody>tr:nth-child(odd)>th {
    color: #00FF00;
-   background-color: #00AA00;
+   background-color: #009900;
  }
 
 .table-striped>tbody>tr:nth-child(even)>td, 
@@ -101,10 +101,7 @@ body {
  }
 
 
-
-
 .spells-th {
-	
 	color: #00FF00;
 	font-size: 1.25em;
 }
@@ -113,4 +110,6 @@ body {
 	border-left: solid #00FF00;
 }
 
-
+thead {
+	background-color:#007777;
+}
