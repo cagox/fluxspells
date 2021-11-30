@@ -8,7 +8,6 @@ import editIcon from './img/toolPencil.png';
 function SpellView() {
     const context = useContext(AppContext)
     const [spell, setSpell] = useState("")
-    const [abilityScore, setAbilityScore] = useState("")
 
 
     useEffect(() => {
@@ -21,50 +20,51 @@ function SpellView() {
             .then(response => response.json())
             .then(data => {
                 setSpell(data);
-                console.log("Data: "+data)
-                fetch(apiroot+'abilityscores/'+data.ability_score_id, {
-                    method: 'GET'
-                }).then(response => response.json()).then(data2=>{setAbilityScore(data2); console.log("Just set data.")})
             })
 
-
-    },[context.spell]);
+},[context.spell]);
 
 
     console.log("Spell: "+spell)
 
+    if (spell === "") {
+        return(
+                <div>The spell is loading</div>
+             );
+    }
+
 
     return(
         <div className="container spell-box">
-            <div className="row">
-                <div className="col">Cost: </div><div className="col">{spell.cost}</div>
-                <div className="col">Difficulty: </div><div className="col">{spell.difficulty}</div>
-                <div className="col">Range: </div><div className="col">{spell.spellrange}</div>
+            <div className="row spell-field">
+                <div className="col">Cost: {spell.cost}</div>
+                <div className="col">Difficulty: {spell.difficulty}</div>
+                <div className="col">Range: {spell.spellrange}</div>
             </div>
-            <div className="row">
-                <div className="col">Prerequisites:</div><div className="col">{spell.prerequisites}</div>
-                <div className="col">Ability Score: </div><div className="col">{abilityScore.name}</div>
-            </div>
-
-            <div className="row">
-                <div className="col-sm-auto">Schools:</div><div className="col">{spell.schools.map((item) => <span>{item.name}</span>)}</div>
+            <div className="row spell-field">
+                <div className="col">Prerequisites: {spell.prerequisites}</div>
+                <div className="col">Ability Score: {spell.display_score}</div>
             </div>
 
-            <div className="row">
-                <div className="col-sm-auto">Categories:</div><div className="col">{spell.categories.map((item) => <span>{item.name}</span>)}</div>
-            </div>
+                        <div className="row spell-field">
+                            <div className="col-sm-auto">Schools: {spell.schools.map((item) => <span>{item.name}&nbsp; </span>)}</div>
+                        </div>
 
-            <div className="row">
-                <div className="col-sm-auto">Summary:</div><div className="col-sm-auto">{spell.summary}</div>
-            </div>
-            <div className="row">
-                <div className="col-sm-auto">Description:</div>
-            </div>
-            <div className="row">
-                <div className="col-sm-auto">{spell.description}</div>
-            </div>
-        </div>
-    );
+                        <div className="row spell-field">
+                            <div className="col-sm-auto">Categories: {spell.categories.map((item) => <span>{item.name}&nbsp; </span>)}</div>
+                        </div>
+
+                        <div className="row spell-field">
+                            <div className="col-sm-auto">Summary: {spell.summary}</div>
+                        </div>
+                        <div className="row spell-field">
+                            <div className="col">Description:</div>
+                        </div>
+                        <div className="row spell-field">
+                            <div className="col">{spell.description}</div>
+                        </div>
+                    </div>
+                    );
 }
 
 export default SpellView;

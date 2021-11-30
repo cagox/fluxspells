@@ -129,4 +129,12 @@ thead {
 	max-width: 80%;
 	margin: 2em auto;
 	border-style: solid;
+	border-color: #008888;
+	border-width: 1px;
+}
+
+.spell-field {
+	border-bottom-style: solid;
+	border-bottom-color: #004444;
+	border-width: 1px;
 }
