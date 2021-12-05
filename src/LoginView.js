@@ -22,13 +22,20 @@ function LoginView() {
                 body: data
             }).then(response => response.json())
                 .then(data => {
-                    context.setToken(data.token);
-                    context.setUser(data.email);
-                    context.setIsAdmin(data.is_admin);
-                    context.setIsAuthenticated(true);
-                    context.setSchool("all");
-                    context.setSpellCategory("all");
-                    context.setPage("indexPage");
+                    if(data.hasOwnProperty('token')){
+                        console.log("Has a token")
+                        context.setToken(data.token);
+                        context.setUser(data.email);
+                        context.setIsAdmin(data.is_admin);
+                        context.setIsAuthenticated(true);
+                        context.setSchool("all");
+                        context.setSpellCategory("all");
+                        context.setPage("indexPage");
+                    }
+                    else {
+                        console.log("No token!")
+                        setProcessLogin(false);
+                    }
                 });
         }
 
