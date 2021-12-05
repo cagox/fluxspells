@@ -9,6 +9,10 @@ export const AppContextProvider = ({ children }) => {
     const [spellCategory, setSpellCategory]  = useState("all");
     const [spell, setSpell]             = useState("none");
     const [headerTitle, setHeaderTitle] = useState("FluxRPG Spell List");
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [token, setToken] = useState();
+    const [user, setUser] = useState();
+    const [isAdmin, setIsAdmin] = useState(false)
 
     return (
         <AppContext.Provider
@@ -23,6 +27,14 @@ export const AppContextProvider = ({ children }) => {
                 setSpell,
                 setSpellCategory,
                 setHeaderTitle,
+                isAuthenticated,
+                setIsAuthenticated,
+                token,
+                setToken,
+                user,
+                setUser,
+                isAdmin,
+                setIsAdmin,
             }}
         >
             {children}

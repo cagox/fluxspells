@@ -2,6 +2,9 @@ import React, {useState, useEffect, useContext} from 'react';
 import {AppContext} from './AppContext.js'
 import {apiroot} from './Config';
 import editIcon from "./img/toolPencil.png";
+import {CategoryURL} from './CategoriesFooter';
+import {SchoolURL} from "./SchoolsHeader";
+
 
 function SpellURL(props) {
     const context = useContext(AppContext);
@@ -75,9 +78,9 @@ function SpellList(props) {
                 {spells.map((item)=>
                     <tr>
                         <td><SpellURL spell_id={item.spell_id} name={item.name}/></td>
-                        <td>{item.schools.map((school)=><span>{school.name}</span>)}</td>
-                        <td>{item.categories.map((category)=><span>{category.name}</span>)}</td>
-                        <td>{item.summary}</td>
+                        <td className={"left-border-green"}>{item.schools.map((school)=><SchoolURL name={school.name} school_id={school.school_id} />)}</td>
+                        <td className={"left-border-green"}>{item.categories.map((category)=><CategoryURL name={category.name} category_id={category.category_id} />)}</td>
+                        <td className={"left-border-green"}>{item.summary}</td>
                     </tr>
                 )}
             </tbody>

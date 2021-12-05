@@ -2,13 +2,14 @@ import React, {useContext, useState, useEffect} from 'react';
 import {AppContext} from './AppContext.js';
 import {apiroot} from './Config';
 import editIcon from './img/toolPencil.png';
+import {SchoolURL} from "./SchoolsHeader";
+import {CategoryURL} from "./CategoriesFooter";
 
 
 
 function SpellView() {
     const context = useContext(AppContext)
     const [spell, setSpell] = useState("")
-
 
     useEffect(() => {
         let spellURI = apiroot+'spells/'+context.spell;
@@ -47,11 +48,11 @@ function SpellView() {
             </div>
 
                         <div className="row spell-field">
-                            <div className="col-sm-auto">Schools: {spell.schools.map((item) => <span>{item.name}&nbsp; </span>)}</div>
+                            <div className="col-sm-auto">Schools: {spell.schools.map((school) => <SchoolURL name={school.name} school_id={school.school_id} />)}</div>
                         </div>
 
                         <div className="row spell-field">
-                            <div className="col-sm-auto">Categories: {spell.categories.map((item) => <span>{item.name}&nbsp; </span>)}</div>
+                            <div className="col-sm-auto">Categories: {spell.categories.map((category) => <CategoryURL name={category.name} category_id={category.category_id} />)}</div>
                         </div>
 
                         <div className="row spell-field">

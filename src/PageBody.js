@@ -4,6 +4,7 @@ import SpellList from './SpellList.js';
 import SchoolView from "./SchoolView";
 import CategoryView from "./CategoryView";
 import SpellView from "./SpellView";
+import LoginView from "./LoginView";
 //import SchoolView from './SchoolView.js';
 //import SpellView from './SpellView';
 
@@ -27,6 +28,12 @@ function PageBody(props){
     if(context.page === "spellView") {
         return (<SpellView />);
     }
+
+    if(context.page === "loginView") {
+        return(<LoginView />)
+    }
+
+
 
     /*
             if page === "typeView"

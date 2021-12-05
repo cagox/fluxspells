@@ -138,3 +138,11 @@ thead {
 	border-bottom-color: #004444;
 	border-width: 1px;
 }
+
+.text-align-right {
+	text-align: right;
+}
+
+.slight-padding {
+	padding: 1em;
+}
