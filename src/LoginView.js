@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
-import AppContext from './AppContext.js';
-import {apiroot} from './Config.js';
+import AppContext from './AppContext';
+import {apiroot} from './Config';
 
 function LoginView() {
     const context = useContext(AppContext);
@@ -23,7 +23,7 @@ function LoginView() {
             }).then(response => response.json())
                 .then(data => {
                     if(data.hasOwnProperty('token')){
-                        console.log("Has a token")
+                        //console.log(data);
                         context.setToken(data.token);
                         context.setUser(data.email);
                         context.setIsAdmin(data.is_admin);
@@ -40,7 +40,7 @@ function LoginView() {
         }
 
 
-    }, [email, password, processLogin])
+    }, [email, password, processLogin, context])
 
 
 
@@ -56,13 +56,13 @@ function LoginView() {
                     <div>
                         <label>
                             Email Address:&nbsp;
-                            <input type="text" value={email} onChange={emailChangeHandler}/>
+                            <input name="email" type="text" value={email} onChange={emailChangeHandler}/>
                         </label>
                     </div>
                     <div>
                         <label>
                             Password:&nbsp;
-                            <input type="password" onChange={passwordChangeHandler}/>
+                            <input name="password" type="password" onChange={passwordChangeHandler}/>
                         </label>
                     </div>
                 </form>

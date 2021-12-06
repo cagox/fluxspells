@@ -5,9 +5,7 @@ import SchoolView from "./SchoolView";
 import CategoryView from "./CategoryView";
 import SpellView from "./SpellView";
 import LoginView from "./LoginView";
-//import SchoolView from './SchoolView.js';
-//import SpellView from './SpellView';
-
+import NewSpell from "./NewSpell";
 
 function PageBody(props){
     const context = useContext(AppContext);
@@ -33,16 +31,13 @@ function PageBody(props){
         return(<LoginView />)
     }
 
+    if(context.page === "newSpell"){
+        return(<NewSpell />)
+    }
 
 
-    /*
-            if page === "typeView"
-            return <TypeView type_id={this.props.type_id} pageIndex={this.props.page_index} />
-         */
-    /*
-        if page === "spellView"
-        return <SpellView spell_id={this.props.spell_id} />
-     */
+
+
 
     /* Default */
     return(

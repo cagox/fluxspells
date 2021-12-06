@@ -7,6 +7,18 @@ import {CategoryURL} from "./CategoriesFooter";
 
 
 
+function EditSpellButton(){
+    const context = useContext(AppContext);
+    if(context.isAuthenticated !== true) {
+        return(<span>&nbsp;</span>);
+    }
+
+    return(
+        <button className="link"><img className="buttonimg icon" src={editIcon} alt={"Edit Spell"} /></button>
+    );
+}
+
+
 function SpellView() {
     const context = useContext(AppContext)
     const [spell, setSpell] = useState("")
@@ -38,7 +50,7 @@ function SpellView() {
     return(
         <div className="container spell-box">
             <div className="row spell-field">
-                <div className="col">Cost: {spell.cost}</div>
+                <div className="col"><EditSpellButton /> Cost: {spell.cost}</div>
                 <div className="col">Difficulty: {spell.difficulty}</div>
                 <div className="col">Range: {spell.spellrange}</div>
             </div>

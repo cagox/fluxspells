@@ -131,6 +131,7 @@ thead {
 	border-style: solid;
 	border-color: #008888;
 	border-width: 1px;
+	padding: 1em;
 }
 
 .spell-field {

@@ -1,9 +1,10 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {AppContext} from './AppContext.js'
 import {apiroot} from './Config';
-import editIcon from "./img/toolPencil.png";
+import addIcon from './img/add.png';
 import {CategoryURL} from './CategoriesFooter';
 import {SchoolURL} from "./SchoolsHeader";
+
 
 
 function SpellURL(props) {
@@ -17,8 +18,23 @@ function SpellURL(props) {
     );
 }
 
+function AddSpellButton(){
+    const context = useContext(AppContext);
+    if(context.isAuthenticated !== true) {
+        return(<span>&nbsp;</span>);
+    }
 
-function SpellList(props) {
+    const clickHandler = () => {context.setPage("newSpell"); context.setHeaderTitle("New Spell")};
+    return(
+        <button className="link" onClick={clickHandler}><img className="buttonimg icon" src={addIcon} alt={"Add a Spell"} /></button>
+    );
+}
+
+
+
+
+
+function SpellList() {
     const context = useContext(AppContext)
     const [spells, setSpells] = useState(null);
 
@@ -47,7 +63,7 @@ function SpellList(props) {
     if(spells === null) {
         return(
             <div className="spell-grid">
-                No Spells in this school.
+                <AddSpellButton /> No Spells in this school.
             </div>
         );
     }
@@ -55,7 +71,7 @@ function SpellList(props) {
     if(spells.length === 0) {
         return(
             <div className="spell-grid">
-                No Spells in this school.
+                <AddSpellButton /> No Spells in this school.
             </div>
         );
     }
@@ -65,10 +81,8 @@ function SpellList(props) {
         <table className="table table-striped">
             <thead>
                 <tr>
-                    <th className="spells-th">
-                        <button className="link"><img className="buttonimg icon" alt="Add Schools" src={editIcon} /></button>
-                        Spell Name
-                    </th>
+                    <th className="spells-th"><AddSpellButton /></th>
+                    <th className="spells-th">Spell Name</th>
                     <th className="left-border-green spells-th">Schools</th>
                     <th className="left-border-green spells-th">Categories</th>
                     <th className="left-border-green spells-th">Summary</th>
@@ -77,7 +91,8 @@ function SpellList(props) {
             <tbody>
                 {spells.map((item)=>
                     <tr>
-                        <td><SpellURL spell_id={item.spell_id} name={item.name}/></td>
+                        <td>&nbsp;</td>
+                        <td className="col-med-auto"><SpellURL spell_id={item.spell_id} name={item.name}/></td>
                         <td className={"left-border-green"}>{item.schools.map((school)=><SchoolURL name={school.name} school_id={school.school_id} />)}</td>
                         <td className={"left-border-green"}>{item.categories.map((category)=><CategoryURL name={category.name} category_id={category.category_id} />)}</td>
                         <td className={"left-border-green"}>{item.summary}</td>

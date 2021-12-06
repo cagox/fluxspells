@@ -13,6 +13,21 @@ export function CategoryURL(props){
 }
 
 
+function EditCategoriesButton(){
+    const context = useContext(AppContext);
+    if(context.isAuthenticated !== true) {
+        return(<span>&nbsp;</span>);
+    }
+
+    return(
+        <button className="link"><img className="buttonimg icon" src={editIcon} alt={"Edit Categories"} /></button>
+    );
+}
+
+
+
+
+
 function CategoriesFooter(){
     const [categories, setCategories] = useState(null)
 
@@ -35,7 +50,7 @@ function CategoriesFooter(){
     if (categories === null) {
         return(
             <div className="navbar navbar-bottom">
-                <button className="link"><img className="buttonimg icon" alt="Add Schools" src={editIcon} /></button>
+                <EditCategoriesButton />
                 <span>No Categories Found</span>
             </div>
         );
@@ -44,7 +59,7 @@ function CategoriesFooter(){
 
     return(
         <div className="navbar navbar-bottom">
-            <button className="link"><img className="buttonimg icon" alt="Add Schools" src={editIcon} /></button>
+            <EditCategoriesButton />
             {categories.map((item)=><CategoryURL key={item.category_id} category_id={item.category_id} name={item.name} />)}
         </div>
     );
