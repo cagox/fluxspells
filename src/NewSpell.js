@@ -38,6 +38,7 @@ function NewSpellForm() {
     const [selectedSchoolList, setSelectedSchoolList] = useState([])
     const [categorySelected, setCategorySelected] = useState({category_id: -1, name: " "})
     const [selectedCategoriesList, setSelectedCategoriesList] = useState([])
+    const [processSpell, setProcessSpell] = useState(false)
 
 
 
@@ -51,13 +52,28 @@ function NewSpellForm() {
     const descriptionChangeHandler = (e) => {setDescription(e.target.value);}
 
     useEffect(() => {
+
+        if(processSpell === true) {
+            let bodyData = JSON.stringify({token: context.token, body_spell: {name: spellName, cost: cost, difficulty: difficulty, spellrange: spellRange, ability_score_id: 8, summary: summary, description: description, schools: selectedSchoolList, categories: selectedCategoriesList, display_score: abilityScore}})
+
+            const requestOptions = {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: bodyData
+            }
+            console.log(bodyData)
+            fetch(apiroot+'spell', requestOptions)
+                .then(response=> response.json())
+                .then(data => {console.log("spell id: "+data.spell_id); context.spell=data.spell_id; context.schools="all"; context.categories="all"; context.page="spellView";})
+        }
+
         fetch(apiroot+"schools/header", {method: "GET"})
             .then(response => response.json())
             .then(data => {setSpellSchools(data); setSpellsLoaded(true); console.log("Spells Loaded")});
         fetch(apiroot+"categories/header", {method: "GET"})
             .then(response => response.json())
             .then(data => {setSpellCategories(data); setCategoriesLoaded(true); console.log("Categories Loaded");});
-    },[context]);
+    },[context, processSpell]);
 
     if(spellsLoaded !== true || categoriesLoaded !== true ) {
         return(<div>Waiting for Data</div>);
@@ -110,6 +126,9 @@ function NewSpellForm() {
 
     const submitSpellHandler = (e) => {
         e.preventDefault();
+        // TODO: Possibly put validation code here.
+        console.log("This was clicked.")
+        setProcessSpell(true)
     }
 
 
