@@ -127,7 +127,7 @@ function NewSpellForm() {
     const submitSpellHandler = (e) => {
         e.preventDefault();
         // TODO: Possibly put validation code here.
-        console.log("This was clicked.")
+        //console.log("This was clicked.")
         setProcessSpell(true)
     }
 
