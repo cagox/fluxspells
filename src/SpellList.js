@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {AppContext} from './AppContext.js'
+import {AppContext} from './AppContext'
 import {apiroot} from './Config';
 import addIcon from './img/add.png';
 import {CategoryURL} from './CategoriesFooter';

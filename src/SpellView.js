@@ -1,5 +1,5 @@
 import React, {useContext, useState, useEffect} from 'react';
-import {AppContext} from './AppContext.js';
+import {AppContext} from './AppContext';
 import {apiroot} from './Config';
 import editIcon from './img/toolPencil.png';
 import {SchoolURL} from "./SchoolsHeader";

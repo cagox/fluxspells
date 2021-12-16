@@ -1,6 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import AppContext from './AppContext.js';
-//import {apiroot} from './Config.js';
+import AppContext from './AppContext';
 
 
 function PageHeader(props) {
@@ -21,6 +20,7 @@ function PageHeader(props) {
 
         console.log("Token: "+context.token);
         console.log("Authenticated: "+context.isAuthenticated)
+        console.log("URL: "+context.url)
 
         }, [context.headerTitle,context.isAuthenticated, context.token]);
 
