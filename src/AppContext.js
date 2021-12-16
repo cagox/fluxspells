@@ -9,10 +9,10 @@ export const AppContextProvider = ({ children }) => {
     const [spellCategory, setSpellCategory]  = useState("all");
     const [spell, setSpell]             = useState("none");
     const [headerTitle, setHeaderTitle] = useState("FluxRPG Spell List");
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [token, setToken] = useState();
-    const [user, setUser] = useState();
-    const [isAdmin, setIsAdmin] = useState(false)
+    const [isAuthenticated, setIsAuthenticated] = useState(JSON.parse(localStorage.getItem("authenticated")));
+    const [token, setToken] = useState(localStorage.getItem("token"));
+    const [user, setUser] = useState(localStorage.getItem("user"));
+    const [isAdmin, setIsAdmin] = useState(JSON.parse(localStorage.getItem("is_admin")))
 
     return (
         <AppContext.Provider

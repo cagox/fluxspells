@@ -27,7 +27,7 @@ function NewSpellForm() {
     const [difficulty,setDifficulty] = useState("Variable")
     const [spellRange, setSpellRange] = useState("Variable")
     const [prerequisites, setPrerequisites] = useState("none")
-    const [abilityScore, setAbilityScore] = useState()
+    const [abilityScore, setAbilityScore] = useState(8)
     const [abilityScores, setAbilityScores] = useState(null)
     const [abilityScoresLoaded, setAbilityScoresLoaded] = useState(false)
     const [summary, setSummary] = useState(" ")
@@ -50,12 +50,13 @@ function NewSpellForm() {
             const requestOptions = {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
+                Authorization: context.token,
                 body: bodyData
             }
-            console.log(bodyData)
+            setProcessSpell(false)
             fetch(apiroot+'spell', requestOptions)
                 .then(response=> response.json())
-                .then(data => {console.log("spell id: "+data.spell_id); context.spell=data.spell_id; context.schools="all"; context.categories="all"; context.page="spellView";})
+                .then(data => {console.log("spell id: "+data.spell_id); context.setSpell(data.spell_id); context.setSchool("all"); context.setSpellCategory("all"); context.setHeaderTitle("Spell: "+spellName); context.setPage("spellView")})
         }
 
         fetch(apiroot+"schools/header", {method: "GET"})

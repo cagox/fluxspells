@@ -7,22 +7,25 @@ function PageHeader(props) {
     const context = useContext(AppContext);
     const [buttonLabel, setButtonLabel] = useState("Button");
 
-    const logoutHandler = () => {context.setIsAuthenticated(false); context.setToken(null); context.setPage("indexPage"); context.setSchool("all"); context.setSpellCategory("all")};
+    const logoutHandler = () => {context.setIsAuthenticated(false); localStorage.setItem("authenticated", false); context.setToken(null); localStorage.setItem("token", null); localStorage.setItem("is_admin", false); context.setPage("indexPage"); context.setSchool("all"); context.setSpellCategory("all")};
     const loginHandler = () => {context.setPage("loginView"); context.setSchool("all"); context.setSpellCategory("all")};
 
     useEffect(() => {
         document.title = context.headerTitle;
 
-        if (context.isAuthenticated) {
+        if (context.isAuthenticated === true) {
             setButtonLabel("Logout");
         } else {
             setButtonLabel("Login");
         }
 
-        }, [context.headerTitle,context.isAuthenticated]);
+        console.log("Token: "+context.token);
+        console.log("Authenticated: "+context.isAuthenticated)
+
+        }, [context.headerTitle,context.isAuthenticated, context.token]);
 
 
-    if(context.isAuthenticated) {
+    if(context.isAuthenticated === true) {
         return(
             <span>
                 <div className={"text-align-right"}><button onClick={logoutHandler} className={"link"}>{buttonLabel}</button></div>

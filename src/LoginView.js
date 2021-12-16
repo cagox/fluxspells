@@ -25,9 +25,13 @@ function LoginView() {
                     if(data.hasOwnProperty('token')){
                         //console.log(data);
                         context.setToken(data.token);
+                        localStorage.setItem("token", data.token)
                         context.setUser(data.email);
+                        localStorage.setItem("user", data.email)
                         context.setIsAdmin(data.is_admin);
+                        localStorage.setItem("is_admin", data.is_admin)
                         context.setIsAuthenticated(true);
+                        localStorage.setItem("authenticated", true)
                         context.setSchool("all");
                         context.setSpellCategory("all");
                         context.setPage("indexPage");
