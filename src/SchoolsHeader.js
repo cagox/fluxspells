@@ -1,16 +1,13 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {AppContext} from './AppContext.js';
+import {A} from 'hookrouter';
 //import ky from 'ky';
 import {apiroot} from './Config';
 import editIcon from './img/toolPencil.png';
 //
 
 export function SchoolURL(props){
-    const context = useContext(AppContext);
-    let new_title = "School of " + props.name;
-    const schoolClickHandler = () => {context.setPage("schoolView"); context.setSchool(props.school_id); context.setSpellCategory("all"); context.setHeaderTitle(new_title);}
-
-    return (<button className="link" key={props.school_id} onClick={schoolClickHandler}>{props.name}</button>);
+    return(<A href={"/schools/"+props.school_id}>{props.name}</A>)
 }
 
 function EditSchoolsButton(){

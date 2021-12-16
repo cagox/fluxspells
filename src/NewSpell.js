@@ -1,4 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
+import {navigate} from 'hookrouter';
 import AppContext from './AppContext.js';
 import {apiroot} from './Config.js';
 
@@ -42,6 +43,8 @@ function NewSpellForm() {
     const [selectedCategoriesList, setSelectedCategoriesList] = useState([])
     const [processSpell, setProcessSpell] = useState(false)
 
+    context.setHeaderTitle("New Spell")
+
     useEffect(() => {
 
         if(processSpell === true) {
@@ -56,8 +59,14 @@ function NewSpellForm() {
             setProcessSpell(false)
             fetch(apiroot+'spell', requestOptions)
                 .then(response=> response.json())
-                .then(data => {console.log("spell id: "+data.spell_id); context.setSpell(data.spell_id); context.setSchool("all"); context.setSpellCategory("all"); context.setHeaderTitle("Spell: "+spellName); context.setPage("spellView")})
-        }
+                .then(data => {
+                    console.log("spell id: "+data.spell_id);
+                    navigate("/spells/"+data.spell_id);
+                    /*context.setSpell(data.spell_id); context.setSchool("all");
+                    context.setSpellCategory("all");
+                    context.setHeaderTitle("Spell: "+spellName);
+                    context.setPage("spellView")*/})
+        }//end processSpell
 
         fetch(apiroot+"schools/header", {method: "GET"})
             .then(response => response.json())
@@ -94,7 +103,6 @@ function NewSpellForm() {
             name: temp_object.name
         }
         setSchoolSelected(selectedSchool)
-        console.log(selectedSchool)
     };
 
     const categorySelectChangeHander = (e) => {
@@ -106,7 +114,6 @@ function NewSpellForm() {
             name: temp_object.name
         }
         setCategorySelected(selectedCategory)
-        console.log(selectedCategory)
     };
 
     const toggleSchoolButtonHandler = (e) => {

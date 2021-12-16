@@ -1,4 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
+import {navigate} from 'hookrouter';
 import AppContext from './AppContext';
 import {apiroot} from './Config';
 
@@ -40,7 +41,7 @@ function LoginView() {
                         console.log("No token!")
                         setProcessLogin(false);
                     }
-                });
+                }).then(navigate("/"));
         }
 
 

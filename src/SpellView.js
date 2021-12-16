@@ -33,6 +33,7 @@ function SpellView() {
             .then(response => response.json())
             .then(data => {
                 setSpell(data);
+                context.setHeaderTitle("Spell: "+data.name)
             })
 
 },[context.spell]);

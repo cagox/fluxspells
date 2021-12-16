@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
+import {A} from 'hookrouter';
 import {AppContext} from './AppContext'
 import {apiroot} from './Config';
 import addIcon from './img/add.png';
@@ -8,14 +9,7 @@ import {SchoolURL} from "./SchoolsHeader";
 
 
 function SpellURL(props) {
-    const context = useContext(AppContext);
-    let new_title = "Spell: " + props.name;
-
-    const clickHandler = () => {context.setPage("spellView"); context.setSpell(props.spell_id); context.setHeaderTitle(new_title);}
-
-    return(
-        <button className="link" onClick={clickHandler}>{props.name}</button>
-    );
+    return (<A href={"/spells/"+props.spell_id}>{props.name}</A>)
 }
 
 function AddSpellButton(){
@@ -24,9 +18,9 @@ function AddSpellButton(){
         return(<span>&nbsp;</span>);
     }
 
-    const clickHandler = () => {context.setPage("newSpell"); context.setHeaderTitle("New Spell")};
+    //const clickHandler = () => {context.setPage("newSpell"); context.setHeaderTitle("New Spell")};
     return(
-        <button className="link" onClick={clickHandler}><img className="buttonimg icon" src={addIcon} alt={"Add a Spell"} /></button>
+        <A href="/spell/new"><img className="buttonimg icon" src={addIcon} alt={"Add a Spell"} /></A>
     );
 }
 

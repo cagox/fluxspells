@@ -20,6 +20,7 @@ function CategoryView() {
             .then(response => response.json())
             .then(data => {
                 setSpellCategory(data);
+                context.setHeaderTitle(data.name+" Spells")
             });
 
 

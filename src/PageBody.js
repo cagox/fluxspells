@@ -1,4 +1,5 @@
 import React, {useContext} from 'react';
+import {navigate} from 'hookrouter';
 import {AppContext} from './AppContext.js';
 import SpellList from './SpellList.js';
 import SchoolView from "./SchoolView";
@@ -35,6 +36,15 @@ function PageBody(props){
         return(<NewSpell />)
     }
 
+    if(context.page === "logout"){
+        context.setIsAuthenticated(false);
+        localStorage.removeItem("authenticated");
+        context.setToken(null);
+        localStorage.removeItem("token");
+        context.setIsAdmin(false);
+        localStorage.removeItem("is_admin");
+        navigate('/');
+    }
 
 
 

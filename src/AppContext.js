@@ -13,7 +13,6 @@ export const AppContextProvider = ({ children }) => {
     const [token, setToken] = useState(localStorage.getItem("token"));
     const [user, setUser] = useState(localStorage.getItem("user"));
     const [isAdmin, setIsAdmin] = useState(JSON.parse(localStorage.getItem("is_admin")))
-    const [url, setUrl] = useState(window.location.pathname)
 
     return (
         <AppContext.Provider
@@ -36,8 +35,6 @@ export const AppContextProvider = ({ children }) => {
                 setUser,
                 isAdmin,
                 setIsAdmin,
-                url,
-                setUrl,
             }}
         >
             {children}

@@ -1,15 +1,12 @@
 import React, {useContext, useState, useEffect} from 'react';
+import {A} from 'hookrouter';
 import {AppContext} from './AppContext';
 import {apiroot} from './Config';
 import editIcon from './img/toolPencil.png';
 
 
 export function CategoryURL(props){
-    const context = useContext(AppContext);
-    let new_title = props.name + " Spells";
-    const clickHandler = () => {context.setPage("categoryView"); context.setSpellCategory(props.category_id); context.setSchool("all"); context.setHeaderTitle(new_title);}
-
-    return (<button className="link" key={props.category_id} onClick={clickHandler}>{props.name}</button>);
+    return(<A href={"/categories/"+props.category_id}>{props.name}</A>);
 }
 
 

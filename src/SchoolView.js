@@ -20,6 +20,7 @@ function SchoolView(props) {
             .then(response => response.json())
             .then(data => {
                 setSchool(data);
+                context.setHeaderTitle("School of "+data.name)
             });
 
         }, [context.school]);
