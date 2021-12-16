@@ -21,17 +21,19 @@ function NewSpell() {
 
 
 function NewSpellForm() {
+    const context = useContext(AppContext)
     const [spellName, setSpellName] = useState("")
     const [cost, setCost] = useState("-")
     const [difficulty,setDifficulty] = useState("Variable")
     const [spellRange, setSpellRange] = useState("Variable")
     const [prerequisites, setPrerequisites] = useState("none")
-    const [abilityScore, setAbilityScore] = useState("Gnosis")
+    const [abilityScore, setAbilityScore] = useState()
+    const [abilityScores, setAbilityScores] = useState(null)
+    const [abilityScoresLoaded, setAbilityScoresLoaded] = useState(false)
     const [summary, setSummary] = useState(" ")
     const [description, setDescription] = useState(" ")
     const [spellCategories, setSpellCategories] = useState();
     const [spellSchools, setSpellSchools] = useState();
-    const context = useContext(AppContext)
     const [spellsLoaded, setSpellsLoaded] = useState(false)
     const [categoriesLoaded, setCategoriesLoaded] = useState(false)
     const [schoolSelected, setSchoolSelected] = useState({school_id: -1, name: " "})
@@ -40,21 +42,10 @@ function NewSpellForm() {
     const [selectedCategoriesList, setSelectedCategoriesList] = useState([])
     const [processSpell, setProcessSpell] = useState(false)
 
-
-
-    const nameChangeHandler = (e) => {setSpellName(e.target.value);}
-    const costChangeHandler = (e) => {setCost(e.target.value);}
-    const difficultyChangeHandler = (e) => {setDifficulty(e.target.value);}
-    const spellRangeChangeHandler = (e) => {setSpellRange(e.target.value);}
-    const prerequisitesChangeHandler = (e) => {setPrerequisites(e.target.value);}
-    const abilityScoreChangeHandler = (e) => {setAbilityScore(e.target.value);}
-    const summaryChangeHandler = (e) => {setSummary(e.target.value);}
-    const descriptionChangeHandler = (e) => {setDescription(e.target.value);}
-
     useEffect(() => {
 
         if(processSpell === true) {
-            let bodyData = JSON.stringify({token: context.token, body_spell: {name: spellName, cost: cost, difficulty: difficulty, spellrange: spellRange, ability_score_id: 8, summary: summary, description: description, schools: selectedSchoolList, categories: selectedCategoriesList, display_score: abilityScore}})
+            let bodyData = JSON.stringify({token: context.token, body_spell: {name: spellName, cost: cost, difficulty: difficulty, spellrange: spellRange, ability_score_id: parseInt(abilityScore), summary: summary, description: description, schools: selectedSchoolList, categories: selectedCategoriesList}})
 
             const requestOptions = {
                 method: 'POST',
@@ -69,13 +60,27 @@ function NewSpellForm() {
 
         fetch(apiroot+"schools/header", {method: "GET"})
             .then(response => response.json())
-            .then(data => {setSpellSchools(data); setSpellsLoaded(true); console.log("Spells Loaded")});
+            .then(data => {setSpellSchools(data); setSpellsLoaded(true);});
         fetch(apiroot+"categories/header", {method: "GET"})
             .then(response => response.json())
-            .then(data => {setSpellCategories(data); setCategoriesLoaded(true); console.log("Categories Loaded");});
+            .then(data => {setSpellCategories(data); setCategoriesLoaded(true);});
+        fetch(apiroot+"abilityscores", {method: "GET"})
+            .then(response => response.json())
+            .then(data => {setAbilityScores(data); setAbilityScoresLoaded(true)});
     },[context, processSpell]);
 
-    if(spellsLoaded !== true || categoriesLoaded !== true ) {
+
+
+    const nameChangeHandler = (e) => {setSpellName(e.target.value);}
+    const costChangeHandler = (e) => {setCost(e.target.value);}
+    const difficultyChangeHandler = (e) => {setDifficulty(e.target.value);}
+    const spellRangeChangeHandler = (e) => {setSpellRange(e.target.value);}
+    const prerequisitesChangeHandler = (e) => {setPrerequisites(e.target.value);}
+    const abilityScoreChangeHandler = (e) => {setAbilityScore(e.target.value);}
+    const summaryChangeHandler = (e) => {setSummary(e.target.value);}
+    const descriptionChangeHandler = (e) => {setDescription(e.target.value);}
+
+    if(spellsLoaded !== true || categoriesLoaded !== true || abilityScoresLoaded !== true) {
         return(<div>Waiting for Data</div>);
     }
 
@@ -90,6 +95,7 @@ function NewSpellForm() {
         setSchoolSelected(selectedSchool)
         console.log(selectedSchool)
     };
+
     const categorySelectChangeHander = (e) => {
         let temp_id = parseInt(e.currentTarget.value);
         let temp_object = spellCategories.find((item) => {return item.category_id === temp_id})
@@ -129,7 +135,7 @@ function NewSpellForm() {
         // TODO: Possibly put validation code here.
         //console.log("This was clicked.")
         setProcessSpell(true)
-    }
+    };
 
 
     return(
@@ -165,8 +171,15 @@ function NewSpellForm() {
 
                 </div>
                 <div className="row slight-padding">
-                    <div className="col-auto"><label>Prerequisites:&nbsp; <input type="text" name="prerequisites" value={prerequisites} onChange={prerequisitesChangeHandler} /></label></div>
-                    <div className="col-auto"><label>Ability Score:&nbsp; <input type="text" name="ability_score" value={abilityScore} onChange={abilityScoreChangeHandler} /></label></div>
+                    <div className="col-auto"><label>Prerequisites:&nbsp; <input type="text" name="prerequisites" size="32" value={prerequisites} onChange={prerequisitesChangeHandler} /></label></div>
+                    <div className="col-auto">
+                        <label>Ability Score:&nbsp;
+                            <select name="ability_score" onChange={abilityScoreChangeHandler}>
+                                <option value={"-1"}></option>
+                                {abilityScores.map((item)=><option value={item.ability_score_id}>{item.name}</option>)}
+                            </select>
+                        </label>
+                    </div>
                 </div>
                 <div className="row slight-padding">
                     <div className="col-auto"><label>Summary:&nbsp; <input type="text" name="summary" size="64" value={summary} onChange={summaryChangeHandler} /></label></div>
