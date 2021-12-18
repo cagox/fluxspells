@@ -48,12 +48,14 @@ function NewSpellForm() {
     useEffect(() => {
 
         if(processSpell === true) {
-            let bodyData = JSON.stringify({token: context.token, body_spell: {name: spellName, cost: cost, difficulty: difficulty, spellrange: spellRange, ability_score_id: parseInt(abilityScore), summary: summary, description: description, schools: selectedSchoolList, categories: selectedCategoriesList}})
+            let bodyData = JSON.stringify({name: spellName, cost: cost, difficulty: difficulty, spellrange: spellRange, ability_score_id: parseInt(abilityScore), summary: summary, description: description, schools: selectedSchoolList, categories: selectedCategoriesList})
 
             const requestOptions = {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                Authorization: context.token,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authrorization': context.token
+                },
                 body: bodyData
             }
             setProcessSpell(false)
