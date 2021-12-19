@@ -11,15 +11,10 @@ import {apiroot} from './Config.js';
  */
 
 function NewSpell() {
-    //TODO: Verify authentication before showing the form.
-    //This will only be important once I implement react-router routing.
-    //I do plan to do that eventually, so people can link to specific spells.
-
     return(
         <NewSpellForm />
     );
 }
-
 
 function NewSpellForm() {
     const context = useContext(AppContext)
@@ -64,10 +59,7 @@ function NewSpellForm() {
                 .then(data => {
                     console.log("spell id: "+data.spell_id);
                     navigate("/spells/"+data.spell_id);
-                    /*context.setSpell(data.spell_id); context.setSchool("all");
-                    context.setSpellCategory("all");
-                    context.setHeaderTitle("Spell: "+spellName);
-                    context.setPage("spellView")*/})
+                   })
         }//end processSpell
 
         fetch(apiroot+"schools/header", {method: "GET"})
